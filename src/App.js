@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState({});
+
+  async function getWeatherData(e) {
+    try {
+      if (e.key === "Enter") {
+        const response = await fetch(
+          "http://api.weatherapi.com/v1/current.json?Key=3445bb98ac60461c93275807231805&q=" +city
+        );
+
+        const data = await response.json();
+        setWeather(data);
+        setCity(" ");
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="container">
+      <div className="container">
+        <input
+          type="text"
+          value={city}
+          placeholder="Enter city or country"
+          onChange={(e) => {
+            setCity(e.target.value);
+          }}
+          onKeyDown={getWeatherData}
+          required
+        />
+      </div>
+
+      {Object.keys(weather).length === 0 ? (
+        <p>Enter a Location...</p>
+      ) : (
+        <div className="container-data">
+          <h4>
+            {weather.location.name}, {weather.location.country}
+          </h4>
+          <h3>{Math.round(weather.current.temp_c)}&deg;C</h3>
+          <p>{weather.current.condition.text}</p>
+        </div>
+      )}
     </div>
   );
 }

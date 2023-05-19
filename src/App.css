@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Mono&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#container{
+  padding-left: 0 60px;
+  width: 500px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container{
+    padding: 7% 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container-data{
+    padding: 7% 2%;
 }
 
-.App-link {
-  color: #61dafb;
+input{
+    width: 80%;
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: 2px solid green; 
+    background-color: transparent;
+    color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input:focus{
+    background-color: black;
+    border: 1px solid #fff;
+}
+
+::-moz-placeholder{
+    color: #fff;
+}
+
+h3{
+    color: #fff;
+    text-align: center;
+    font-size: 4rem;
+    font-family: "Roboto Mono";
+    margin-bottom: 30px;
+}
+
+p{
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Roboto Mono";
+}
+
+h4{
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: "Roboto Mono";
+}
+
+
+@media screen and (max-width:600px) {
+    #container{
+        width: 350px;
+        padding-top: 90px;
+    }
+
+    input{
+        width: 70%;
+    }
+
+    .container-data{
+        margin-top: 40px;
+    }
+
+    h4{
+        font-size: 1.3rem;
+    }
+
+    h3{
+        font-size: 2.5rem;
+    }
+
+    p{
+        font-size: 1.5rem;
+    }
 }
