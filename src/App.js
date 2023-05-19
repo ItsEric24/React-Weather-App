@@ -8,10 +8,7 @@ function App() {
   async function getWeatherData(e) {
     try {
       if (e.key === "Enter") {
-        const response = await fetch(
-          "http://api.weatherapi.com/v1/current.json?Key=3445bb98ac60461c93275807231805&q=" +city
-        );
-
+        const response = await fetch("https://api.weatherapi.com/v1/current.json?Key=3445bb98ac60461c93275807231805&q=" +city);
         const data = await response.json();
         setWeather(data);
         setCity(" ");
